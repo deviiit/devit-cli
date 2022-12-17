@@ -2,9 +2,18 @@ import { GluegunToolbox } from 'gluegun'
 
 // add your CLI-specific functionality here, which will then be accessible
 // to your commands
-module.exports = (toolbox: GluegunToolbox) => {
+module.exports = async (toolbox: GluegunToolbox) => {
   toolbox.foo = () => {
     toolbox.print.info('called foo extension')
+  }
+
+  if (toolbox.parameters.command === 'cms-template') {
+    const devitConfigs = toolbox.config.loadConfig('devit', process.cwd())
+    console.log({ devitConfigs })
+    toolbox.config = {
+      ...toolbox.config,
+      ...devitConfigs,
+    }
   }
 
   // enable this if you want to read configuration in from

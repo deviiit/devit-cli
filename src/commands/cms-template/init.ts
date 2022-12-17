@@ -1,9 +1,9 @@
 import { GluegunCommand } from 'gluegun'
 
 const command: GluegunCommand = {
-  name: 'init',
+  name: 'cms-template init',
   run: async (toolbox) => {
-    toolbox.print.info(toolbox.config.loadConfig())
+    toolbox.print.info(toolbox.config)
   },
 }
 
