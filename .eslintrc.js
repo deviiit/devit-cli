@@ -16,6 +16,8 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-namespace': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     'no-unused-vars': 'off',
   },
 }
