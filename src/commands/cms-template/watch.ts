@@ -43,6 +43,25 @@ const command: GluegunCommand = {
         spinner.succeed(print.colors.green(`Refreshed Successfully!`))
       }
 
+      if (['.js'].includes(ext)) {
+        const spinner = print.spin({
+          text: print.colors.muted(`Refreshing ${blockName}...`),
+        })
+
+        const js = await filesystem.readAsync(
+          resolve(process.cwd(), filePath),
+          'utf8'
+        )
+
+        await apiClient.sendBlockCode({
+          blockName,
+          token: toolbox.config.apiToken,
+          js,
+        })
+
+        spinner.succeed(print.colors.green(`Refreshed Successfully!`))
+      }
+
       print.table(
         [
           ['File', `${filePath}`],
